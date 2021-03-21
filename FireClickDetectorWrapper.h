@@ -1,7 +1,8 @@
 /* hi axon skids */
 
-int FireClickDetector(DWORD rL)
-	{
+int FireClickDetector(lua_State* L)
+	{ 
+	        DWORD rL = m_rL;
 		r_lua_getglobal(rL, "game");
 		r_lua_getfield(rL, -1, "GetService");
 		r_lua_insert (rL, -2);
@@ -13,9 +14,9 @@ int FireClickDetector(DWORD rL)
 		
 
 		float Distance = 0.0;
-		if (r_lua_gettop(rL) == 2)
+		if (lua_gettop(L) == 2)
 		{
-			Distance = (float)r_lua_tonumber(rL, 2, 0);
+			Distance = (float)lua_tonumber(L, 2);
 			r_lua_remove(rL, 2);
 		}
 
